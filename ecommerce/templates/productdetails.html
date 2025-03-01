@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block background %}
+{% endblock %}
+{% block content %}
+<section class="product_section layout_padding">
+         <div class="container ">
+            <div class="heading_container heading_center">
+               <h2>
+                  Product <span>Details</span>
+               </h2>
+            </div>
+         </div>
+ <section class=" mb-5 w-75 mx-auto">
+         <div class=" p-3">
+            <div class="box">
+<div class="row">
+    <div class="col-md-6 ml-auto">
+               <div class="arrival_bg_box">
+                  <img src="{{productdetails.image.url}}" alt="" height="300px" width="300px" class="border border-4 border-dark">
+               </div>
+    </div>
+
+                  <div class="col-md-6 ml-auto">
+                     <div class="heading_container remove_line_bt">
+                        <h2>
+                          {{productdetails.name}}
+                        </h2>
+                     </div>
+                     <p style="margin-top: 20px;margin-bottom: 30px;">
+                        {{productdetails.description}}
+                     </p>
+                      <p style="margin-top: 20px;margin-bottom: 30px;">
+                        <i class="fa-solid fa-indian-rupee-sign"></i>  {{productdetails.price}}
+                     </p>
+                      <p style="margin-top: 20px;margin-bottom: 30px;">
+                        stock:{{productdetails.stock}}
+                     </p>
+                      {% if user.is_superuser %}
+                            {% if productdetails.stock > 0 %}
+                            <p>Product in stock</p>
+                            <a href="{% url 'cart:addstock' productdetails.id %}" class="btn btn-danger">Add Stock</a>
+                            {% else %}
+                            <p>Product out of stock</p>
+                            <a href="{% url 'cart:addstock' productdetails.id %}" class="btn btn-danger">Add Stock</a>
+                            {% endif %}
+                      {% else %}
+                             {% if productdetails.stock > 0 %}
+                                <a href="{% url 'cart:addtocart' productdetails.id %}" class="btn btn-danger">Add to cart</a>
+                            {% else %}
+                                <p>Product out of stock</p>
+                            {% endif %}
+                      {% endif %}
+
+<!--                     <a href="{% url 'shop:category' %}" class="btn btn-danger">-->
+<!--                     Shop Now-->
+<!--                     </a>-->
+<!--                    <a href="">-->
+<!--                     Add to cart-->
+<!--                     </a>-->
+                  </div>
+               </div>
+            </div>
+         </div>
+
+            </div>
+         </div>
+
+      </section>
+{% endblock %}

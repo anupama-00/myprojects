@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block background %}
+{% endblock %}
+{% block content %}
+    <section class="product_section layout_padding" id="cat">
+         <div class="container">
+            <div class="heading_container heading_center">
+               <h2>
+                  Billing <span>Details</span>
+               </h2>
+            </div>
+         </div>
+</section>
+<div class="container w-50 border border-4 border-danger p-5 mb-5">
+<form method="POST">
+    {% csrf_token %}
+    <label>Address</label>
+    <textarea name="a" placeholder="Enter Address"></textarea>
+    <label>Number</label>
+    <input type="number" name="n" placeholder="Enter Number">
+    <label>Pin</label>
+    <input type="number" name="p" placeholder="Enter Pin">
+    <input type="submit" class="btn btn-danger">
+</form>
+
+    </div>
+
+{% endblock %}
