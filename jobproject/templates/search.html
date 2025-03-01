@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+    <section class="section-hero overlay inner-page bg-image" style="background-image: url({% static 'images/hero_1.jpg' %});" id="home-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7">
+            <h1 class="text-white font-weight-bold">Searched Jobs</h1>
+            <div class="custom-breadcrumbs">
+              <a href="{% url 'employee:home' %}">Home</a> <span class="mx-2 slash">/</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+   <section class="site-section">
+      <div class="container">
+
+        <div class="row mb-1 justify-content-center">
+          <div class="col-md-7 text-center">
+            <h2 class="section-title mb-2">Looking for something? We’ve got it!</h2>
+          </div>
+        </div>
+      </div>
+   </section>
+
+{% for i in jobsearch %}
+{% if jobsearch %}
+<div class="container w-100 ">
+<ul class="job-listings mb-5 p-3">
+          <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
+            <a href="job-single.html"></a>
+            <div class="job-listing-logo">
+              <img src="{{i.image.url}}" height="100px" width="100px" alt="Free Website Template by Free-Template.co" class="img-fluid">
+            </div>
+
+            <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
+              <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
+                <h2>{{i.title}}</h2>
+                <strong>{{i.tagname}}</strong>
+              </div>
+              <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
+                <span class="icon-room"></span> {{i.location}},{{i.region}}
+              </div>
+              <div class="job-listing-meta">
+                <span class="badge badge-danger">{{i.type}}</span>
+                <a href="{% url 'company:jobdetails' i.id %}"  class="btn btn-success d-flex justify-content-between me-5" >View</a>
+              </div>
+            </div>
+          </li>
+</ul>
+    {% else %}
+<h1>no</h1>
+{% endif %}
+</div>
+
+
+{% endfor %}
+{% endblock %}
+{% block content %}
+
+{% endblock %}

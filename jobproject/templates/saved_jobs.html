@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+    <section class="section-hero overlay inner-page bg-image" style="background-image: url({% static 'images/hero_1.jpg' %});" id="home-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7">
+            <h1 class="text-white font-weight-bold">Saved Jobs</h1>
+            <div class="custom-breadcrumbs">
+              <a href="{% url 'employee:home' %}">Home</a> <span class="mx-2 slash">/</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section class="site-section">
+  <div class="container">
+          <div class="col-lg-6 mx-auto">
+            <h2 class="mb-4 text-center">Saved for Success – Revisit & Apply!</h2>
+          </div>
+         </section>
+{% for i in saved_jobs %}
+<div class="container border p-2 mb-4">
+
+    <div class="row">
+
+        <div class="col-3">
+            <img src="{{i.job.image.url}}" height="100px" width="100px" >
+        </div>
+        <div class="col-3">
+            <h5 class="text-dark fw-2 fs-3 mt-3">{{i.job.title}}</h5><br>
+                <strong>{{i.job.tagname}}</strong>
+        </div>
+        <div class="col-3">
+            <h6 class=" mt-3"></h6><i class="fa-solid fa-location-dot"></i> {{i.job.location}},{{i.job.region}}
+        </div>
+        <div class="col-3">
+             <span class="badge badge-danger mt-3">{{i.job.type}}</span>
+            <a href="{% url 'company:jobdetails' i.job.id %}"  class="btn btn-success mt-3" >View Details</a>
+            <a href="{% url 'employee:remove' i.job.id %}">
+            <i class="fas fa-trash-alt"></i>
+            </a>
+        </div>
+
+    </div>
+
+</div>
+x
+{% empty %}
+        <h3 class="text-center">No saved jobs yet.</li>
+
+{% endfor %}
+
+{% endblock %}
+{% block content %}
+
+{% endblock %}

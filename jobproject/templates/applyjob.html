@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+    <section class="section-hero overlay inner-page bg-image" style="background-image: url({% static 'images/hero_1.jpg' %});" id="home-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7">
+            <h1 class="text-white font-weight-bold">Apply Now</h1>
+            <div class="custom-breadcrumbs">
+              <a href="{% url 'employee:home' %}">Home</a> <span class="mx-2 slash">/</span>
+              <span class="text-white"><strong>Log In</strong></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section class="site-section">
+  <div class="container">
+          <div class="col-lg-6 mx-auto">
+
+            <form method="POST" action="#" class="p-4 border rounded">
+            {% csrf_token %}
+              <div class="row form-group">
+                <div class="col-md-12 mb-3 mb-md-0">
+                  <label class="text-black" for="fname">Resume</label>
+                  <input type="file" id="fname" name="r" class="form-control" >
+                </div>
+              </div>
+              <div class="row form-group mb-4">
+                <div class="col-md-12 mb-3 mb-md-0">
+                  <label class="text-black" for="fname">Current CTC</label>
+                  <input type="number" name="c" id="fname" class="form-control" placeholder="Current CTC">
+                </div>
+              </div>
+                <div class="row form-group mb-4">
+                <div class="col-md-12 mb-3 mb-md-0">
+                  <label class="text-black" for="fname">Expected CTC</label>
+                  <input type="number" name="e" id="fname" class="form-control" placeholder="Expected CTC">
+                </div>
+              </div>
+                <div class="row form-group mb-4">
+                <div class="col-md-12 mb-3 mb-md-0">
+                  <label class="text-black" for="fname">Interview Dates</label><br>
+                 <textarea name="i" placeholder="Enter 2 or 3 interview dates" cols="52" rows="5"></textarea>
+                </div>
+              </div>
+
+
+              <div class="row form-group">
+                <div class="col-md-12">
+                  <input type="submit" value="Submit" class="btn px-4 btn-primary text-white">
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+{% endblock %}
+{% block content %}
+
+{% endblock %}

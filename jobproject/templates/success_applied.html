@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+    <section class="section-hero overlay inner-page bg-image" style="background-image: url({% static 'images/hero_1.jpg' %});" id="home-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7">
+            <h1 class="text-white font-weight-bold">Successfully Applied</h1>
+            <div class="custom-breadcrumbs">
+              <a href="{% url 'employee:home' %}">Home</a> <span class="mx-2 slash">/</span>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<div class="container w-50 mt-5 bg-success p-5 mb-5 text-center border border-dark">
+    <h1>You have successfully applied</h1>
+    <p class="text-dark">Keep visit our site for further updations</p>
+</div>
+
+
+{% endblock %}
+{% block content %}
+
+{% endblock %}
