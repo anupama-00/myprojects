@@ -33,18 +33,30 @@ class Productlist(DetailView):
     model=Category
     template_name = 'products.html'
     context_object_name = 'products'
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('shop:login')  # Redirect to login page
+        return super().dispatch(request, *args, **kwargs)
 
 
 class Allproducts(ListView):
     model=Product
     template_name = 'allproducts.html'
     context_object_name = 'allproducts'
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('shop:login')  # Redirect to login page
+        return super().dispatch(request, *args, **kwargs)
 
 
 class Productdetails(DetailView):
     model = Product
     template_name = 'productdetails.html'
     context_object_name = 'productdetails'
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('shop:login')  # Redirect to login page
+        return super().dispatch(request, *args, **kwargs)
 
 
 class Register(CreateView):
@@ -79,4 +91,8 @@ class Logout(View):
     def get(self,request):
         logout(request)
         return redirect('shop:category')
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('shop:login')  # Redirect to login page
+        return super().dispatch(request, *args, **kwargs)
 
