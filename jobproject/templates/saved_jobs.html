@@ -38,7 +38,7 @@
         <div class="col-3">
              <span class="badge badge-danger mt-3">{{i.job.type}}</span>
             <a href="{% url 'company:jobdetails' i.job.id %}"  class="btn btn-success mt-3" >View Details</a>
-            <a href="{% url 'employee:remove' i.job.id %}">
+            <a href="{% url 'employee:remove' i.id %}">
             <i class="fas fa-trash-alt"></i>
             </a>
         </div>
